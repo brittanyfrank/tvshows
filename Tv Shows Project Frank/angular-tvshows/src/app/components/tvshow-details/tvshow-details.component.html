@@ -1,0 +1,55 @@
+<div>
+    <div *ngIf="currentTvshow._id" class="edit-form">
+      <h4>Tv show</h4>
+      <form>
+        <div class="form-group">
+          <label for="title">Title of Show</label>
+          <input
+            type="text"
+            class="form-control"
+            id="title"
+            [(ngModel)]="currentTvshow.title"
+            name="title"
+          />
+        </div>
+        <div class="form-group">
+          <label for="description">Description of Show</label>
+          <input
+            type="text"
+            class="form-control"
+            id="description"
+            [(ngModel)]="currentTvshow.description"
+            name="description"
+          />
+        </div>
+        <div class="form-group">
+            <label for="season">Number of Seasons</label>
+            <input
+              type="text"
+              class="form-control"
+              id="season"
+              [(ngModel)]="currentTvshow.season"
+              name="season"
+            />
+          </div>
+  
+      <button class="m-3 btn btn-sm btn-danger" (click)="deleteTvshow()">
+        Delete
+      </button>
+  
+      <button
+        type="submit"
+        class="m-3 btn btn-sm btn-success"
+        (click)="updateTvshow()"
+      >
+        Update
+      </button>
+      <p>{{ message }}</p>
+      </form>
+    </div>
+  
+    <div *ngIf="!currentTvshow._id">
+      <br />
+      <p>Cannot access this tv show...</p>
+    </div>
+</div>

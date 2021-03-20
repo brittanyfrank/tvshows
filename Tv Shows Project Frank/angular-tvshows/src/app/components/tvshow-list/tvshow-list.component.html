@@ -1,0 +1,59 @@
+<div class="list row">
+    <div class="col-md-8">
+      <div class="input-group mb-3">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Search by title"
+          [(ngModel)]="title"
+        />
+        <div class="input-group-append">
+          <button
+            class="btn btn-outline-secondary"
+            type="button"
+            (click)="searchTitle()"
+          >
+            Search
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <h4>Tv show List</h4>
+      <ul class="list-group">
+        <li
+          class="list-group-item"
+          *ngFor="let tvshow of tvshows; let i = index"
+          [class.active]="i == currentIndex"
+          (click)="setActiveTvshow(tvshow, i)"
+        >
+          {{ tvshow.title }}
+        </li>
+      </ul>
+  
+      <button class="m-3 btn btn-sm btn-danger" (click)="removeAllTvshows()">
+        Remove All
+      </button>
+    </div>
+    <div class="col-md-6">
+        <div *ngIf="!currentTvshow">Please select tv show</div>
+      <div *ngIf="currentTvshow">
+        <h4>Tv show</h4>
+        <div>
+          <label><strong>Title:</strong></label> {{ currentTvshow.title }}
+        </div>
+        <div>
+          <label><strong>Description:</strong></label>
+          {{ currentTvshow.description }}
+        </div>
+        <div>
+          <label><strong>Seasons:</strong></label>
+          {{ currentTvshow.season }}
+        </div>
+  
+        <a class="m-3 btn btn-sm badge-warning" routerLink="/tvshows/{{ currentTvshow._id }}">
+          Edit
+        </a>
+      </div>
+    </div>
+  </div>
